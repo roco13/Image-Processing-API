@@ -4,16 +4,27 @@
   "description": "Final project for Backend Development with Node.js course",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ext .js",
-    "prettier": "prettier --config .prettierrc 'src/**/*.js' --write"
+    "build": "npx tsc",
+    "lint": "eslint . --ext .ts",
+    "jasmine": "jasmine",
+    "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jasmine": "^5.1.4",
+    "@types/node": "^20.10.4",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.0.1",
-    "prettier": "^3.1.1"
+    "prettier": "^3.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "jasmine": "^5.1.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "sharp": "^0.33.0"
   }
 }
