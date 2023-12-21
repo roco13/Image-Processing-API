@@ -1,9 +1,14 @@
-// const myName = 'your name';
+import express from "express";
+const app = express();
+const port = 3000;
 
-// const hello = (userName: string): string => `hello, ${userName}`;
+//create endpoint
+app.get('/api',(req,res) => {
+    res.send("hello world")
+})
 
-// console.log(hello(myName));
-// console.log('hello again');
-const myFunc = (num: number) => num * 5;
+//create server
+app.listen(port, () => {
+    console.log(`server ready at localhost:${port}`)
+})
 
-export default myFunc;
