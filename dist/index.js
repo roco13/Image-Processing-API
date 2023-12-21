@@ -1,8 +1,16 @@
 "use strict";
-// const myName = 'your name';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-// const hello = (userName: string): string => `hello, ${userName}`;
-// console.log(hello(myName));
-// console.log('hello again');
-const myFunc = (num) => num * 5;
-exports.default = myFunc;
+const express_1 = __importDefault(require("express"));
+const app = (0, express_1.default)();
+const port = 3000;
+//create endpoint
+app.get('/api', (req, res) => {
+    res.send("hello world");
+});
+//create server
+app.listen(port, () => {
+    console.log(`server ready at localhost:${port}`);
+});
