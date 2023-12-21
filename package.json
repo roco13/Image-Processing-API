@@ -7,24 +7,30 @@
     "build": "npx tsc",
     "lint": "eslint . --ext .ts",
     "jasmine": "jasmine",
+    "test": "npm run build && npm run jasmine",
     "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.17.21",
     "@types/jasmine": "^5.1.4",
     "@types/node": "^20.10.4",
+    "@types/supertest": "^2.0.16",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "nodemon": "^3.0.2",
     "prettier": "^3.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "express": "^4.18.2",
     "jasmine": "^5.1.0",
     "jasmine-spec-reporter": "^7.0.0",
-    "sharp": "^0.33.0"
+    "sharp": "^0.33.0",
+    "supertest": "^6.3.3"
   }
 }
