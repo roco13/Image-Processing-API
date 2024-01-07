@@ -1,19 +1,16 @@
 import express from 'express';
 import routes from './routes/index';
-import students from './routes/api/students';
-import teachers from './routes/api/teachers';
+import logger from './utilities/logger';
 
 const app = express();
 const port = 3000;
 
 //create middleware
-app.use('/', routes);
-app.use('/students', students);
-app.use('/teachers', teachers);
-
-
+app.use('/api', logger, routes);
 
 //create server
 app.listen(port, () => {
   console.log(`server ready at http://localhost:${port}`);
 });
+
+export default app;
