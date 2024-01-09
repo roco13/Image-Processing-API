@@ -12,19 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const supertest_1 = __importDefault(require("supertest"));
-const index_1 = __importDefault(require("../index"));
-const request = (0, supertest_1.default)(index_1.default);
-// describe('Test endpoint responses', () => {
-//   it('gets the api endpoint', async (done) => {
-//     const response = await request.get('/api');
-//     expect(response.status).toBe(200);
-//     done();
-//   });
-// });
-describe('Test endpoint responses', () => {
-    it('gets the api endpoint', () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get('/api/images');
-        expect(response.status).toBe(200);
-    }));
+const sharp_1 = __importDefault(require("sharp"));
+const path_1 = __importDefault(require("path"));
+const resizeImage = (imageName, width, height) => __awaiter(void 0, void 0, void 0, function* () {
+    let imgPath = 'images/' + imageName + '.jpg';
+    let newImagPath = 'images/thumb/' + imageName + '_' + width + '_' + width + '.jpg';
+    yield (0, sharp_1.default)(path_1.default.resolve(imgPath))
+        .resize(width, height)
+        .toFile(path_1.default.resolve(newImagPath));
 });
+exports.default = resizeImage;

@@ -1,5 +1,4 @@
 import express from 'express';
-const path = require('path');
 
 //import logger from '../../utilities/logger'
 const images = express.Router();

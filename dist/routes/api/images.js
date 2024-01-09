@@ -7,12 +7,7 @@ const express_1 = __importDefault(require("express"));
 //import logger from '../../utilities/logger'
 const images = express_1.default.Router();
 //create primary endpoint with get request
-// images.get('/images', logger, (req, res) => {
-//   res.send('images route');
-// });
 images.get('/', (req, res) => {
     res.send('images route');
 });
-// req.query.name
-// req.query.surname
 exports.default = images;

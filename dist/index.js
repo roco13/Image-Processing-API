@@ -13,37 +13,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-//import sharp from 'sharp';
-const index_1 = __importDefault(require("./routes/index"));
 const logger_1 = __importDefault(require("./utilities/logger"));
-const sharp = require('sharp');
-// async function getMetadata() {
-//   const metadata = await sharp("./images/encenadaport.jpg").metadata();
-//   console.log(metadata);
-// }
-// getMetadata()
-const resizeImage2 = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        yield sharp('images/fjord.jpg')
-            .resize(200, 200)
-            .toFile(__dirname + '/thumb/fjordresized.jpg');
-    }
-    catch (e) {
-        console.log(`Error occured: ${e}`);
-    }
-});
-const resizeImage = () => __awaiter(void 0, void 0, void 0, function* () {
-    const resize = yield sharp('images/fjord.jpg')
-        .resize(350, 260)
-        .toFile('images/thumb2/resize_fjord.jpg');
-    console.log(resize);
-});
-//resizeImage2();
-//resizeImage();
+const resizeImage_1 = __importDefault(require("./utilities/resizeImage"));
+const index_1 = __importDefault(require("./routes/index"));
 const app = (0, express_1.default)();
 const port = 3000;
 //create middleware
 app.use('/api', logger_1.default, index_1.default);
+// Without middleware
+app.get('/api/images', logger_1.default, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    let fileName = req.query.name;
+    let width = Number(req.query.width);
+    let height = Number(req.query.height);
+    try {
+        if (fileName === '' || width === 0 || height === 0) {
+            res.send(`Error in the current url, need to provide image name, widht and height<br>
+    For example http://localhost:3000/api/images<b>?name=fjord&width=200&height=200</b> `);
+            return;
+        }
+        let outputFile = `${fileName}_${width}_${height}.jpg`;
+        yield (0, resizeImage_1.default)(fileName, width, height);
+        yield res.sendFile(outputFile, { root: 'images/thumb' });
+    }
+    catch (err) {
+        res.send(`Error in the current url, need to provide image name, widht and height<br>
+    For example http://localhost:3000/api/images<b>?name=fjord&width=200&height=200</b> `);
+        console.log(err);
+    }
+}));
 //create server
 app.listen(port, () => {
     console.log(`server ready at http://localhost:${port}`);
