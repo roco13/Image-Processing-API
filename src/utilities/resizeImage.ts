@@ -18,7 +18,6 @@ const resizeImage = async (
     newFilename
   );
 
-
   await sharp(imgPath).resize(width, height).toFile(newImagPath);
 
   return newImagPath;

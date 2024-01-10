@@ -15,13 +15,10 @@ describe('test if Sharp resize function works', () => {
     );
   });
 
-//   it('returns an error when heigh is 0', async () => {
-//     const response = await resizeImage('palmtunnel', 300, 0);
-//     expect(response).toEqual(
-//       'Error: Expected positive integer for height but received 0 of type number'
-//     );
-//   });
-
-
-
+  //   it('returns an error when heigh is 0', async () => {
+  //     const response = await resizeImage('palmtunnel', 300, 0);
+  //     expect(response).toEqual(
+  //       'Error: Expected positive integer for height but received 0 of type number'
+  //     );
+  //   });
 });
