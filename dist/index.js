@@ -15,11 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const logger_1 = __importDefault(require("./utilities/logger"));
 const resizeImage_1 = __importDefault(require("./utilities/resizeImage"));
-const index_1 = __importDefault(require("./routes/index"));
+//import routes from './routes/index';
 const app = (0, express_1.default)();
 const port = 3000;
 //create middleware
-app.use('/api', logger_1.default, index_1.default);
+//app.use('/api', logger, routes);
 // Without middleware
 app.get('/api/images', logger_1.default, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let fileName = req.query.name;
@@ -36,9 +36,9 @@ app.get('/api/images', logger_1.default, (req, res, next) => __awaiter(void 0, v
         yield res.sendFile(outputFile, { root: 'images/thumb' });
     }
     catch (err) {
+        console.log(err);
         res.send(`Error in the current url, need to provide image name, widht and height<br>
     For example http://localhost:3000/api/images<b>?name=fjord&width=200&height=200</b> `);
-        console.log(err);
     }
 }));
 //create server

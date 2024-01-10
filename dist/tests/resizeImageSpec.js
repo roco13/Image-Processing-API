@@ -12,14 +12,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const sharp_1 = __importDefault(require("sharp"));
+const resizeImage_1 = __importDefault(require("../utilities/resizeImage"));
 const path_1 = __importDefault(require("path"));
-const resizeImage = (imageName, width, height) => __awaiter(void 0, void 0, void 0, function* () {
-    const newFilenameInput = imageName + '.jpg';
-    let imgPath = path_1.default.resolve(__dirname, '..', '..', 'images', newFilenameInput);
-    const newFilename = imageName + '_' + width + '_' + height + '.jpg';
-    let newImagPath = path_1.default.resolve(__dirname, '..', '..', 'images/thumb', newFilename);
-    yield (0, sharp_1.default)(imgPath).resize(width, height).toFile(newImagPath);
-    return newImagPath;
+describe('test if Sharp resize function works', () => {
+    it('returns a valid response with the rigth image', () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield (0, resizeImage_1.default)('palmtunnel', 300, 300);
+        expect(response).toEqual(path_1.default.resolve(__dirname, '..', '..', 'images/thumb', 'palmtunnel_300_300.jpg'));
+    }));
+    //   it('returns an error when heigh is 0', async () => {
+    //     const response = await resizeImage('palmtunnel', 300, 0);
+    //     expect(response).toEqual(
+    //       'Error: Expected positive integer for height but received 0 of type number'
+    //     );
+    //   });
 });
-exports.default = resizeImage;

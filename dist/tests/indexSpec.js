@@ -27,4 +27,12 @@ describe('Test endpoint responses', () => {
         const response = yield request.get('/api/images');
         expect(response.status).toBe(200);
     }));
+    it('gets the proper response when image name and dimensions are provided', () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield request.get('/api/images?name=fjord&width=300&height=300');
+        expect(response.status).toBe(200);
+    }));
+    it('gets the proper response even if image dimensions is missing', () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield request.get('/api/images?name=fjord&width=300&height=');
+        expect(response.status).toBe(200);
+    }));
 });

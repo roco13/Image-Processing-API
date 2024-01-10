@@ -16,4 +16,18 @@ describe('Test endpoint responses', () => {
     const response = await request.get('/api/images');
     expect(response.status).toBe(200);
   });
+
+  it('gets the proper response when image name and dimensions are provided', async () => {
+    const response = await request.get(
+      '/api/images?name=fjord&width=300&height=300'
+    );
+    expect(response.status).toBe(200);
+  });
+
+  it('gets the proper response even if image dimensions is missing', async () => {
+    const response = await request.get(
+      '/api/images?name=fjord&width=300&height='
+    );
+    expect(response.status).toBe(200);
+  });
 });
