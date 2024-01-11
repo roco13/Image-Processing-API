@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const logger = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    let url = req.url;
+    const url = req.url;
     console.log(`url= ${url} was visited`);
     next();
 });

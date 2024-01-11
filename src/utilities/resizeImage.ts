@@ -5,9 +5,9 @@ const resizeImage = async (
   imageName: string,
   width: number,
   height: number
-): Promise<String> => {
+): Promise<string> => {
   const newFilenameInput: string = imageName + '.jpg';
-  let imgPath: string = path.resolve(
+  const imgPath: string = path.resolve(
     __dirname,
     '..',
     '..',
@@ -15,7 +15,7 @@ const resizeImage = async (
     newFilenameInput
   );
   const newFilename: string = imageName + '_' + width + '_' + height + '.jpg';
-  let newImagPath: string = path.resolve(
+  const newImagPath: string = path.resolve(
     __dirname,
     '..',
     '..',

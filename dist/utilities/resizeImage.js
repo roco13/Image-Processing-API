@@ -16,9 +16,9 @@ const sharp_1 = __importDefault(require("sharp"));
 const path_1 = __importDefault(require("path"));
 const resizeImage = (imageName, width, height) => __awaiter(void 0, void 0, void 0, function* () {
     const newFilenameInput = imageName + '.jpg';
-    let imgPath = path_1.default.resolve(__dirname, '..', '..', 'images', newFilenameInput);
+    const imgPath = path_1.default.resolve(__dirname, '..', '..', 'images', newFilenameInput);
     const newFilename = imageName + '_' + width + '_' + height + '.jpg';
-    let newImagPath = path_1.default.resolve(__dirname, '..', '..', 'images/thumb', newFilename);
+    const newImagPath = path_1.default.resolve(__dirname, '..', '..', 'images/thumb', newFilename);
     yield (0, sharp_1.default)(imgPath).resize(width, height).toFile(newImagPath);
     return newImagPath;
 });

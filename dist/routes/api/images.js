@@ -16,18 +16,18 @@ const express_1 = __importDefault(require("express"));
 const resizeImage_1 = __importDefault(require("../../utilities/resizeImage"));
 const images = express_1.default.Router();
 //create primary endpoint with get request
-images.get('/', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+images.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     //res.send('images route');
-    let fileName = req.query.name;
-    let width = Number(req.query.width);
-    let height = Number(req.query.height);
+    const fileName = req.query.name;
+    const width = Number(req.query.width);
+    const height = Number(req.query.height);
     try {
         if (fileName === '' || width === 0 || height === 0) {
             res.send(`Error in the current url, need to provide image name, widht and height<br>
     For example http://localhost:3000/api/images<b>?name=fjord&width=200&height=200</b> `);
             return;
         }
-        let outputFile = `${fileName}_${width}_${height}.jpg`;
+        const outputFile = `${fileName}_${width}_${height}.jpg`;
         yield (0, resizeImage_1.default)(fileName, width, height);
         yield res.sendFile(outputFile, { root: 'images/thumb' });
     }

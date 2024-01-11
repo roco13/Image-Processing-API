@@ -3,9 +3,9 @@ import express from 'express';
 const logger = async (
   req: express.Request,
   res: express.Response,
-  next: Function
+  next: express.NextFunction
 ): Promise<void> => {
-  let url = req.url;
+  const url = req.url;
   console.log(`url= ${url} was visited`);
   next();
 };
