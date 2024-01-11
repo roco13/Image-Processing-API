@@ -6,6 +6,11 @@ Final project for Backend Development with Node.js course
 
     npm run start
 
+# Endpoint
+
+    api/
+    api/images
+
 # Test
 
     npm run test
